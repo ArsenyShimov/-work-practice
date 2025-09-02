@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1.Здесь функция makeUser возвращает объект.
+
+    Каким будет результат при обращении к свойству объекта ref? Почему?
+    
+    function makeUser() {
+      return {
+        name: "John",
+        ref: this
+      };
+    }
+    
+    let user = makeUser();
+    
+    alert( user.ref.name ); // Каким будет результат?
+    // выдаст ошибку
+
+    2.Создайте объект calculator (калькулятор) с тремя методами:
+    read() (читать) запрашивает два значения и сохраняет их как свойства объекта с именами a и b.
+    sum() (суммировать) возвращает сумму сохранённых значений.
+    mul() (умножить) перемножает сохранённые значения и возвращает результат.
+    <script>
+        let calculator = {
+        sum() {
+            return this.a + this.b;
+        },
+
+        mul() {
+            return this.a * this.b;
+        },
+
+        read() {
+            this.a = +prompt('a?', 0);
+            this.b = +prompt('b?', 0);
+        }
+        };
+
+        calculator.read();
+        alert( calculator.sum() );
+        alert( calculator.mul() );
+    </script>
+    3.У нас есть объект ladder (лестница), который позволяет подниматься и спускаться:
+    <script>
+        let ladder = {
+            step: 0,
+            up() {
+                this.step++;
+                return this;
+            },
+            down() {
+                this.step--;
+                return this;
+            },
+            showStep() {
+                alert( this.step );
+                return this;
+            }
+            };
+            ladder.up().up().down().showStep().down().showStep();
+    </script>
+</body>
+</html>
