@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1.Напишите функцию ucFirst(str), возвращающую строку str с заглавным первым символом. Например:
+    ucFirst("вася") == "Вася";
+    <!-- <script>
+        function ucFirst(str){
+            if (!str) return str;
+            return str[0].toUpperCase() + str.slice(1);
+        }
+        alert(ucFirst("сеня"));
+    </script> -->
+    2.Напишите функцию checkSpam(str), возвращающую true, если str содержит 'viagra' или 'XXX', а иначе false.
+    Функция должна быть нечувствительна к регистру:
+    <!-- <script>
+        function checkSpam(str){
+            let lowerStr = str.toLowerCase();
+            return lowerStr.includes('viagra') || lowerStr.includes('xxx');
+        }
+        alert(checkSpam('buy ViAgRA now'))
+        alert(checkSpam('free xxxxx'))
+        alert(checkSpam("innocent rabbit"))
+    </script> -->
+    3.Создайте функцию truncate(str, maxlength), которая проверяет длину строки str и, если она превосходит maxlength, заменяет конец str на "…", так, чтобы её длина стала равна maxlength.
+    Результатом функции должна быть та же строка, если усечение не требуется, либо, если необходимо, усечённая строка.
+    <!-- <script>
+        function truncate(str,maxlength){
+            return (str.length > maxlength) ?
+            str.slice(0, maxlength - 1) + '…' : str;
+        }
+        alert(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20))
+        alert(truncate("Всем привет!", 20))
+    </script> -->
+    4.Есть стоимость в виде строки "$120". То есть сначала идёт знак валюты, а затем – число.
+    Создайте функцию extractCurrencyValue(str), которая будет из такой строки выделять числовое значение и возвращать его.
+    <script>
+        function extractCurrencyValue(str){
+            return +str.slice(1);
+        }
+        alert( extractCurrencyValue('$120'));
+    </script>
+</body>
+</html>
