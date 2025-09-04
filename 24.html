@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1.Допустим, у нас есть массив arr.
+    Создайте функцию unique(arr), которая вернёт массив уникальных, 
+    не повторяющихся значений массива arr.
+    <!-- <script>
+        function unique(arr) {
+        return Array.from(new Set(arr));
+        }
+
+        let values = ["Hare", "Krishna", "Hare", "Krishna",
+        "Krishna", "Krishna", "Hare", "Hare", ":-O"
+        ];
+
+        alert( unique(values) ); // Hare,Krishna,:-O
+    </script> -->
+    2.Анаграммы – это слова,
+    у которых те же буквы в том же количестве, но они располагаются в другом порядке.
+    <!-- <script>
+    function aclean(arr) {
+    let obj = {};
+
+    for (let i = 0; i < arr.length; i++) {
+        let sorted = arr[i].toLowerCase().split("").sort().join("");
+        obj[sorted] = arr[i];
+    }
+
+    return Object.values(obj);
+    }
+
+    let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+    alert( aclean(arr) );
+    </script> -->
+    3.Мы хотели бы получить массив ключей map.keys() 
+    в переменную и далее работать с ними,
+    например, применить метод .push.
+    <script>
+        let map = new Map();
+
+        map.set("name", "John");
+
+        let keys = Array.from(map.keys());
+
+        // Error: keys.push is not a function
+        // Ошибка: keys.push -- это не функция
+        keys.push("more");
+        alert(keys);
+    </script>
+</body>
+</html>
