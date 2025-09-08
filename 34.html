@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1.Создайте декоратор spy(func), который должен возвращать обёртку,
+    которая сохраняет все вызовы функции в своём свойстве calls.
+    Каждый вызов должен сохраняться как массив аргументов.
+    <!-- <script>
+        function spy(func) {
+        function wrapper(...args) {
+        wrapper.calls.push(args)+;
+        return func.apply(this, args);
+        }
+
+        wrapper.calls = [];
+
+        return wrapper;
+        }
+        function work(a, b) {
+        alert( a + b ); // произвольная функция или метод
+        }
+
+        work = spy(work);
+
+        work(1, 2); // 3
+        work(4, 5); // 9
+
+        for (let args of work.calls) {
+        alert( 'call:' + args.join() ); // "call:1,2", "call:4,5"
+        }
+    </script> -->
+    2.Создайте декоратор delay(f, ms), который задерживает каждый вызов f на ms миллисекунд. 
+    <!-- <script>
+        function delay(f, ms) {
+
+        return function(...args) {
+        let savedThis = this; 
+        setTimeout(function() {
+            f.apply(savedThis, args); 
+        }, ms);
+        };
+
+        }
+        let f10000 = delay(alert, 10000);
+
+        f10000("test");
+    </script> -->
+    3.Декоратор debounce
+    <!-- <script>
+        function debounce(func, ms) {
+        let timeout;
+        return function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, arguments), ms);
+        };
+        }
+        let f = _.debounce(alert, 1000);
+
+        f("a");
+        setTimeout( () => f("b"), 200);
+        setTimeout( () => f("c"), 500);
+    </script> -->
+    4.Тормозящий (throttling) декоратор
+    <script>
+        function throttle(func, ms) {
+
+        let isThrottled = false,
+        savedArgs,
+        savedThis;
+
+        function wrapper() {
+
+        if (isThrottled) { // (2)
+            savedArgs = arguments;
+            savedThis = this;
+            return;
+        }
+
+        func.apply(this, arguments); // (1)
+
+        isThrottled = true;
+
+        setTimeout(function() {
+            isThrottled = false; // (3)
+            if (savedArgs) {
+            wrapper.apply(savedThis, savedArgs);
+            savedArgs = savedThis = null;
+            }
+        }, ms);
+        }
+
+        return wrapper;
+        }
+    </script>
+</body>
+</html>
